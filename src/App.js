@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import AnimalShow from './AnimalShow.js';
 
 function App() {
 
@@ -7,7 +7,12 @@ function App() {
 
   const handleClick = () => {
     setAnimals([...animals, getRandomAnimal()]);
-  }
+  };
+
+  const renderedAnimals = animals.map((animal, index) => {
+      return <AnimalShow type={animal} key={index} />
+    }
+  );
 
   // const setAnimals = (animal) => {
   //   animals.add(animal);
@@ -22,7 +27,8 @@ function App() {
   return (
     <div>
       <button onClick={handleClick}>Add Animal</button>
-      <div>{animals}</div>
+      {/*loop through animals*/}
+      <div>{renderedAnimals}</div>
     </div>
   );
 
